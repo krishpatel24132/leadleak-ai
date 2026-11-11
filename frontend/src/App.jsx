@@ -6,7 +6,8 @@ import AuthPanel from "./AuthPanel.jsx";
 
 
 
-const API_URL = "http://localhost:5000/api/analyze";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API_URL = `${API_BASE_URL}/api/analyze`;
 
 
 
@@ -166,7 +167,7 @@ export default function App() {
 
       try {
 
-        const response = await fetch("http://localhost:5000/api/auth/me", {
+        const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
 
           headers: { Authorization: `Bearer ${token}` },
 
@@ -258,7 +259,7 @@ export default function App() {
 
       try {
 
-        const response = await fetch("http://localhost:5000/api/audits", {
+        const response = await fetch(`${API_BASE_URL}/api/audits`, {
 
           headers: { Authorization: `Bearer ${token}` },
 
@@ -872,7 +873,7 @@ export default function App() {
 
     try {
 
-      const response = await fetch(`http://localhost:5000/api/audits/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/audits/${id}`, {
 
         method: "DELETE",
 
@@ -924,7 +925,7 @@ export default function App() {
 
     try {
 
-      const response = await fetch("http://localhost:5000/api/audits", {
+      const response = await fetch(`${API_BASE_URL}/api/audits`, {
 
         method: "DELETE",
 
